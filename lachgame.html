@@ -23,6 +23,8 @@ function preload() {
 	game.load.image('diamond', 'assets/diamond.png');
 	game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 	game.load.spritesheet('dalek', 'assets/dalek.png', 48, 57);
+	game.load.spritesheet('cybercontroller', 'assets/cybercontroller.png', 48, 73);
+  game.load.spritesheet('tenth', 'assets/tenth.png', 48, 86);
 }
 
 var platforms;
@@ -62,8 +64,11 @@ function create() {
 	    ledge.body.immovable = true;
 
 			player = game.add.sprite(32, game.world.height - 150, 'dalek');
+			cybercontroller = game.add.sprite(32, game.world.height - 150, 'cybercontroller');
+			tenth = game.add.sprite(32, game.world.height - 150, 'tenth');
 
 			game.physics.arcade.enable(player);
+			game.physics.arcade.enable(cybercontroller);
 
 			player.body.bounce.y = 0.2;
 			player.body.gravity.y = 300;
