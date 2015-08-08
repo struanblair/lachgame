@@ -1,6 +1,6 @@
 var playState = {
 
-	create: function() { 
+	create: function() {
 	    //  A simple background for our game
 	    this.background = game.add.sprite(0, 0, 'sky');
 
@@ -81,36 +81,40 @@ var playState = {
 	game.physics.arcade.collide(this.diamonds, this.platforms);
 	game.physics.arcade.overlap(this.player, this.stars, this.collectStar, null, this);
 	game.physics.arcade.overlap(this.player, this.diamonds, this.bumpIntoDiamond, null, this);
-	//  Reset the players velocity (movement)
-	    this.player.body.velocity.x = 0;
+	this.movePlayer(this.player, this.cursors);
+	},
 
-	    if (this.cursors.left.isDown)
-	    {
-	        //  Move to the left
-	        this.player.body.velocity.x = -150;
+	movePlayer: function(player, cursors) {
+		//  Reset the players velocity (movement)
+		    player.body.velocity.x = 0;
 
-	        this.player.animations.play('left');
-	    }
-	    else if (this.cursors.right.isDown)
-	    {
-	        //  Move to the right
-	        this.player.body.velocity.x = 150;
+		    if (cursors.left.isDown)
+		    {
+		        //  Move to the left
+		        player.body.velocity.x = -150;
 
-	        this.player.animations.play('right');
-	    }
-	    else
-	    {
-	        //  Stand still
-	        this.player.animations.stop();
+		        player.animations.play('left');
+		    }
+		    else if (cursors.right.isDown)
+		    {
+		        //  Move to the right
+		        player.body.velocity.x = 150;
 
-	        this.player.frame = 1;
-	    }
+		        player.animations.play('right');
+		    }
+		    else
+		    {
+		        //  Stand still
+		        player.animations.stop();
 
-	    //  Allow the player to jump if they are touching the ground.
-	    if (this.cursors.up.isDown && this.player.body.touching.down)
-	    {
-	        this.player.body.velocity.y = -350;
-	    }
+		        player.frame = 1;
+		    }
+
+		    //  Allow the player to jump if they are touching the ground.
+		    if (cursors.up.isDown && player.body.touching.down)
+		    {
+		        player.body.velocity.y = -350;
+		    }
 	},
 
 	collectStar: function(player, star) {
@@ -125,4 +129,3 @@ var playState = {
 		this.scoreText.text = 'Score: ' + game.global.score;
 	}
 	};
-
