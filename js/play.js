@@ -31,10 +31,14 @@ var playState = {
 			this.player = game.add.sprite(32, game.world.height - 150, 'tenth');
 			this.cybercontroller = game.add.sprite(game.world.width - 64, game.world.height - 270, 'cybercontroller');
 			this.dalek = game.add.sprite(32, game.world.height - 400, 'dalek');
+			this.legocyberman = game.add.sprite(100, game.world.height - 200, 'legocyberman');
 
 			game.physics.arcade.enable(this.player);
 			game.physics.arcade.enable(this.cybercontroller);
 			game.physics.arcade.enable(this.dalek);
+			game.physics.arcade.enable(this.legocyberman);
+
+			this.legocyberman.body.gravity.y = 300;
 
 			this.player.body.bounce.y = 0.2;
 			this.player.body.gravity.y = 300;
@@ -64,11 +68,6 @@ var playState = {
 			this.baddies = game.add.group();
 			this.baddies.enableBody = true;
 
-			for (var i = 0; i < 5; i++) {
-				var legocyberman = this.baddies.create(i * 100, 0, 'legocyberman');
-				legocyberman.body.gravity.y = 40;
-			}
-
 			this.cursors = game.input.keyboard.createCursorKeys();
 			this.scoreText = game.add.text(16, 16, 'score: ' + game.global.score, { fontSize: '32px', fill: '#000' });
 
@@ -76,6 +75,7 @@ var playState = {
 
 	update: function() {
 	game.physics.arcade.collide(this.player, this.platforms);
+	game.physics.arcade.collide(this.legocyberman, this.platforms); 
 	game.physics.arcade.collide(this.baddies, this.platforms);
 	game.physics.arcade.collide(this.stars, this.platforms);
 	game.physics.arcade.collide(this.diamonds, this.platforms);
