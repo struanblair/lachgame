@@ -18,7 +18,7 @@ var loadState = {
 		game.load.image('diamond', 'assets/diamond.png');
 		game.load.spritesheet('dalek', 'assets/dalek.png', 48, 57);
 		game.load.spritesheet('cybercontroller', 'assets/cybercontroller.png', 48, 73);
-		game.load.spritesheet('legocyberman', 'assets/legocyberman.png', 43, 71)
+		game.load.spritesheet('legocyberman', 'assets/legocyberman.png', 43, 71);
 		game.load.spritesheet('tenth', 'assets/tenth.png', 48, 86);
 	},
 
